@@ -1,7 +1,9 @@
 class Solution:
     def carPooling(self, trips: List[List[int]], capacity: int) -> bool:
         
-        dp = [0] * 1000
+        # print(max(max(trips)))
+        
+        dp = [0] * max(max(trips, key=lambda x: x[2]))
         
         trips.sort(key = lambda x: x[1])
         
