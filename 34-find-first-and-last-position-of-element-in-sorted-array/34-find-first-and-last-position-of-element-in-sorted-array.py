@@ -1,14 +1,15 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        n = len(nums)
-        locations = list()
         
-        for i in range(n):
-            if nums[i] == target:
-                locations.append(i)
-        
-        if len(locations) > 0:
-            return [locations[0],locations[-1]]
-        else:
+        if not nums:
             return [-1,-1]
-                
+        
+        left = bisect.bisect_left(nums,target)
+        
+        if left >= len(nums) or nums[left]!= target:
+            return [-1,-1]
+        
+        right = bisect.bisect_right(nums,target)
+        
+        return [left,right-1]
+        
