@@ -8,12 +8,13 @@ class Solution:
     def preod(self,rot):
         if not rot:
             return []
-        stack = [rot,]
+        
+        stack = deque([rot,])
         result = list()
         
         
         while stack:
-            node=stack.pop()
+            node=stack.popleft()
             result.append(node.val)
             if node.right:
                 stack.append(node.right)
