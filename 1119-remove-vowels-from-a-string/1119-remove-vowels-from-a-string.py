@@ -1,5 +1,5 @@
 class Solution:
     def removeVowels(self, s: str) -> str:
-        result = re.sub(r'[AEIOU]', '', s, flags=re.IGNORECASE)
+        result = re.sub(r'[aeiou]', '', s)
         return result
         
