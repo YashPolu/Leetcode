@@ -1,28 +1,27 @@
 class Solution:
-    def checkInclusion(self, s1: str, s2: str) -> bool:
+    def checkInclusion(self, p: str, s: str) -> bool:
+        ns,np = len(s),len(p)
         
-        n1 = len(s1)
-        n2 = len(s2)
-
-        if n1 > n2: 
-            return False
-
-        target = [0 for _ in range(26)]
-        window = [0 for _ in range(26)]
-
-        for i in range(n1):
-            target[ord(s1[i]) - ord('a')] += 1
-            window[ord(s2[i]) - ord('a')] += 1
-
-        if(target == window):
-            return True
-
-        for i in range(n1, n2):
-            window[ord(s2[i - n1]) - ord('a')] -= 1
-            window[ord(s2[i]) - ord('a')] += 1
-
-            if target == window:
+        if ns< np:
+            return []
+        
+        pc = Counter(p)
+        sc = Counter()
+        
+        
+        for i in range(ns):
+            sc[s[i]] +=1
+            
+            if i >=np:
+                if sc[s[i-np]] == 1:
+                    del sc[s[i-np]]
+                else:
+                    sc[s[i-np]]-=1
+                    
+            if pc == sc:
                 return True
-
+        
         return False
-                
+    
+        
+        
