@@ -1,5 +1,11 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        return 2 * sum(set(nums)) - sum(nums)
+        
+        a = 0
+        
+        for n in nums:
+            a^=n
+            
+        return a
         
         
