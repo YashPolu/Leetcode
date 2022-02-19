@@ -7,12 +7,12 @@ class Solution:
             return 0
         
         count = 0 
-        d = Counter(s[:k])
+        d = Counter()
         
-        if len(d.keys()) == k:
-            count+=1
+#         if len(d.keys()) == k:
+#             count+=1
         
-        for i in range(k,l):
+        for i in range(l):
             d[s[i]]+=1
             
             if i >= k:
