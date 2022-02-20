@@ -1,17 +1,24 @@
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         
-        # stack approach
-        max_len , stack = 0, list()
+        if s is None:
+            return 0
         
-        for symbol in s:
-            if symbol not in stack:
-                stack.append(symbol)
-                max_len = max(max_len,len(stack))
-            else:
-                stack.append(symbol)
-                stack = stack[stack.index(symbol)+1:]
+        if len(s)<=1:
+            return len(s)
         
-        return max_len
+        d = dict()
+        start = longest = 0
+        
+        for i,c in enumerate(s):
+            if c in d:
+                start = max(start,d[c]+1)
+            
+            longest = max(longest,i-start+1)
+            d[c] = i
+        
+        return longest
+        
+        
         
         
