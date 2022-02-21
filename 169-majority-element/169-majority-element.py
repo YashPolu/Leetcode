@@ -5,10 +5,9 @@ class Solution:
                 return key
     def majorityElement(self, nums: List[int]) -> int:
         count = Counter(nums)
+        # ele = 
         
-        ele = self.get_key(count,max(count.values()))
-        
-        return ele
+        return self.get_key(count,max(count.values()))
         
         
         
